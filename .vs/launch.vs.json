@@ -1,0 +1,14 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      // This is stupid. It should either be "KlemmUITemplate.exe" or "Debug\\KlemmUITemplate.exe"
+      "projectTarget": "KlemmUITemplate.exe (Debug\\KlemmUITemplate.exe)",
+      "name": "KlemmUITemplate.exe (Debug\\KlemmUITemplate.exe)",
+      "currentDir": "${workspaceRoot}"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+[submodule "dependencies/KlemmUI"]
+	path = dependencies/KlemmUI
+	url = https://github.com/Klemmbaustein/KlemmUI.git
