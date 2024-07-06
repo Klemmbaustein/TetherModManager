@@ -1,0 +1,52 @@
+const highlightColor = (0.2, 0.4, 1);
+
+element Separator
+{
+	var Color = 1;
+	var Size = (1, 1);
+
+	tryFill = true;
+	orientation = vertical;
+	padding = 5px;
+
+	child UIBackground
+	{
+		size = Size;
+		sizeMode = px;
+		tryFill = true;
+	}
+}
+
+element AppButton
+{
+	var Color = 1;
+	var TextColor = 0;
+	var Image;
+	var Text;
+	padding = 5px;
+
+	child UIButton button
+	{
+		verticalAlign = centered;
+		color = 1;
+
+		borderType = rounded;
+		borderSize = 5px;
+
+		child UIBackground
+		{
+			image = Image;
+			color = TextColor;
+			size = 20px;
+			padding = 5px;
+		}
+
+		child UIText
+		{
+			padding = 5px;
+			text = Text;
+			color = TextColor;
+			size = 12px;
+		}
+	}
+}

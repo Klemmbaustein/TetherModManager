@@ -1,0 +1,57 @@
+
+element ProfileButton
+{
+	var Icon;
+
+	padding = 5px;
+
+	child UIButton button
+	{
+		color = 0.2;
+		size = 32px;
+		image = Icon;
+	}
+}
+
+element ProfileListElement
+{
+	var Color = 1;
+	var ProfileDescription;
+
+	padding = 5px;
+
+	child UIButton profileButton
+	{
+		borderType = rounded;
+		borderSize = 5px;
+		color = Color;
+		orientation = horizontal;
+		verticalAlign = centered;
+
+		child UIBox
+		{
+			padding = 5px;
+			leftPadding = 30px;
+			rightPadding = 30px;
+			child UIBox textFieldBox
+			{
+			}
+			child UIText descriptionBox
+			{
+				text = ProfileDescription;
+				size = 11px;
+				color = 0;
+			}
+			orientation = vertical;
+		}
+		
+		child ProfileButton copyButton
+		{
+			Icon = "app/images/copy.png";
+		}
+		child ProfileButton copyButton
+		{
+			Icon = "app/images/delete.png";
+		}
+	}
+}

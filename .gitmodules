@@ -1,3 +1,6 @@
-[submodule "dependencies/KlemmUI"]
-	path = dependencies/KlemmUI
+[submodule "Dependencies/KlemmUI"]
+	path = Dependencies/KlemmUI
 	url = https://github.com/Klemmbaustein/KlemmUI.git
+[submodule "Dependencies/spdlog"]
+	path = Dependencies/spdlog
+	url = https://github.com/gabime/spdlog.git

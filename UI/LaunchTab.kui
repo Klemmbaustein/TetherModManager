@@ -1,0 +1,19 @@
+element LaunchButton
+{
+	child UIButton button
+	{
+		color = 1;
+
+		borderType = rounded;
+		borderSize = 10px;
+		padding = 25px;
+
+		child UIText text
+		{
+			color = 0;
+			size = 25px;
+			padding = 8px;
+			text = $"play_launch_northstar";
+		}
+	}
+}

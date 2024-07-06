@@ -1,0 +1,158 @@
+
+element ModEntry
+{
+	var Image;
+	var Name;
+
+	padding = 5px;
+
+	child UIButton button
+	{
+		orientation = vertical;
+
+		size = (140, 200)px;
+
+		borderType = rounded;
+		borderSize = 5px;
+
+		child UIBackground
+		{
+			color = 0.1;
+			child UIBackground image
+			{
+				image = Image;
+				size = 140px;
+			}
+		}
+
+		child UIText
+		{
+			text = Name;
+			size = 10px;
+			color = 0;
+			padding = 2px;
+			wrap = 260px;
+		}
+	}
+}
+
+element ModFilter
+{
+	var Text;
+	var Color;
+
+	padding = 5px;
+
+	child UIButton button
+	{
+		color = Color;
+		minSize = (100, 0)px;
+		horizontalAlign = centered;
+
+		borderType = rounded;
+		borderSize = 5px;
+		child UIText
+		{
+			padding = 5px;
+			text = Text;
+			size = 10px;
+			color = 0;
+		}
+	}
+}
+
+element ModPageButton
+{
+	var Text;
+	var Color;
+
+	padding = 5px;
+
+	child UIButton button
+	{
+		color = Color;
+		minSize = (25, 0)px;
+		horizontalAlign = centered;
+
+		borderType = rounded;
+		borderSize = 5px;
+		child UIText
+		{
+			padding = 5px;
+			text = Text;
+			size = 10px;
+			color = 0;
+		}
+	}
+}
+
+element ModInfoHeader
+{
+	var ModName;
+	var ModImage;
+	var ModDescription;
+	var ModInfo;
+
+	orientation = vertical;
+	tryFill = true;
+	upPadding = 10px;
+
+	child AppButton backButton
+	{
+		Text = $"mods_page_back";
+		Image = "app/images/back.png";
+	}
+
+	child Separator
+	{
+	}
+
+	child UIBox
+	{
+		orientation = horizontal;
+
+		child UIBackground modImage
+		{
+			size = 150px;
+			padding = 5px;
+			image = ModImage;
+		}
+
+		child UIBox
+		{
+			padding = 5px;
+			orientation = vertical;
+
+			child UIText
+			{
+				text = ModName;
+				size = 20px;
+			}
+			child UIText
+			{
+				upPadding = 10px;
+				text = ModDescription;
+				size = 14px;
+				color = 0.9;
+				wrap = 2.0sr;
+			}
+			child UIText
+			{
+				upPadding = 10px;
+				color = 0.9;
+				text = ModInfo;
+				size = 14px;
+				wrap = 2.0sr;
+			}
+		}
+	}
+
+	child UIBox actionsBox
+	{
+		
+	}
+
+	child Separator
+	{
+	}
+}

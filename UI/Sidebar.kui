@@ -1,0 +1,26 @@
+element SidebarButton
+{
+	padding = 4px;
+	var Icon;
+	var Color = highlightColor;
+
+	child UIButton button
+	{
+		borderType = rounded;
+		borderSize = 5px;
+
+		color = Color;
+		
+		hoveredColor = (0.7, 0.8, 1);
+
+		pressedColor = highlightColor;
+
+		child UIBackground icon
+		{
+			image = Icon;
+			size = 60px;
+			padding = 2px;
+			color = 0;
+		}
+	}
+}

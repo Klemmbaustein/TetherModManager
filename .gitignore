@@ -366,3 +366,5 @@ MigrationBackup/
 FodyWeavers.xsd
 app/shaders
 compile_commands.json
+/app/temp
+/LinuxBuild

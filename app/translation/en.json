@@ -1,0 +1,21 @@
+{
+  "name": "English",
+
+  "app_title": "Tether: %i",
+
+  "tab_play": "Play",
+  "tab_play_description": "Play the game",
+  "tab_mods": "Mods",
+  "tab_mods_description": "Install or uninstall Northstar mods",
+
+  "play_launch_northstar": "Launch Northstar",
+
+  "mods_filtering_installed": "Installed",
+  "mods_filtering_latest": "Latest",
+  "mods_filtering_last_changed": "Last changed",
+  "mods_filtering_most_downloaded": "Most downloaded",
+  "mods_filtering_top_rated": "Top rated",
+
+  "mods_page_back": "Back",
+  "mods_page_info": "By: %s | Downloads: %i | Ratings: %i"
+}

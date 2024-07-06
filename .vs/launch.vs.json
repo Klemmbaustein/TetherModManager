@@ -5,9 +5,15 @@
     {
       "type": "default",
       "project": "CMakeLists.txt",
-      // This is stupid. It should either be "KlemmUITemplate.exe" or "Debug\\KlemmUITemplate.exe"
-      "projectTarget": "KlemmUITemplate.exe (Debug\\KlemmUITemplate.exe)",
-      "name": "KlemmUITemplate.exe (Debug\\KlemmUITemplate.exe)",
+      "projectTarget": "TetherInstaller.exe (Debug\\TetherInstaller.exe)",
+      "name": "TetherInstaller.exe (Debug\\TetherInstaller.exe)",
+      "currentDir": "${workspaceRoot}"
+    },
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "TetherInstaller.exe",
+      "name": "TetherInstaller.exe",
       "currentDir": "${workspaceRoot}"
     }
   ]
