@@ -4,4 +4,6 @@
 namespace Installer
 {
 	extern KlemmUI::Window* AppWindow;
+
+	void UpdateWindowStyle();
 }

@@ -1,6 +1,7 @@
 #include "WindowsFunctions.h"
 #include <iostream>
 #include <filesystem>
+#include <spdlog/spdlog.h>
 #if _WIN32
 #include <Windows.h>
 #include <wtsapi32.h>
@@ -78,6 +79,7 @@ std::string Windows::GetCurrentProcessName()
 
 void Windows::ErrorBox(std::string Content)
 {
+	spdlog::critical(__FUNCTION__ ": {}", Content);
 	MessageBoxA(0, Content.c_str(), "Error", MB_ICONERROR);
 }
 
@@ -217,6 +219,7 @@ void Windows::SetWorkingDirectory()
 
 void Windows::ErrorBox(std::string Content)
 {
+	spdlog::critical("{}: {}", __FUNCTION__, Content);
 	system(("zenity --error --text \"" + StrUtil::Replace(Content, "\"", "\\\"") + "\"").c_str());
 }
 

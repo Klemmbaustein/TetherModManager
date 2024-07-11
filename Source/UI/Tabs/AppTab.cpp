@@ -14,7 +14,7 @@ void AppTab::UpdateSize()
 		SidebarSize = AppUI::AppSidebar->GetWidth();
 	}
 
-	TabBox->SetMinSize(Vector2f(2) - Vector2f(SidebarSize, 0));
+	TabBox->SetMinSize(Vector2f(2) - Vector2f(SidebarSize, AppUI::AppTitleBar->GetUsedSize()));
 	TabBox->SetPosition(Vector2f(-1, -1) + Vector2f(SidebarSize, 0));
 }
 

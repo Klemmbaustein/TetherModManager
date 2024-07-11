@@ -1,15 +1,19 @@
 {
   "name": "English",
 
-  "app_title": "Tether: %i",
+  "app_title": "Tether: %s",
+
+  "game_path_write_protected": "Titanfall 2 is installed in write-protected folder. Please change the folder's permissions or install the game in another folder.",
 
   "tab_play": "Play",
   "tab_play_description": "Play the game",
   "tab_mods": "Mods",
   "tab_mods_description": "Install or uninstall Northstar mods",
+  "tab_profiles": "Profiles",
 
   "play_launch_northstar": "Launch Northstar",
 
+  "mods_search": "Search mods",
   "mods_filtering_installed": "Installed",
   "mods_filtering_latest": "Latest",
   "mods_filtering_last_changed": "Last changed",
@@ -17,5 +21,13 @@
   "mods_filtering_top_rated": "Top rated",
 
   "mods_page_back": "Back",
-  "mods_page_info": "By: %s | Downloads: %i | Ratings: %i"
+  "mods_page_info": "By: %s | Downloads: %i | Ratings: %i",
+  "mods_page_release_candidate_not_available": "Installing a Northstar Release Candidate is currently not supported. This feature will be re-added in the future.",
+  "mods_page_install": "Install",
+  "mods_page_open_in_browser": "Open in browser",
+
+  "settings_setting_language": "Language",
+  "settings_setting_title_bar_style": "Title bar style",
+  "setting_title_bar_custom": "Custom",
+  "setting_title_bar_system": "System"
 }

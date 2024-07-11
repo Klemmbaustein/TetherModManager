@@ -1,0 +1,31 @@
+
+element SettingsElement
+{
+	var Name;
+
+	tryFill = true;
+	verticalAlign = centered;
+	horizontalAlign = centered;
+
+	child UIBox
+	{
+		minSize = 150px;
+		padding = 5px;
+		tryFill = true;
+		verticalAlign = centered;
+
+		child UIText
+		{
+			size = 11px;
+			text = Name;
+			wrap = 290px;
+			padding = 5px;
+		}
+	}
+
+	child UIBox contentBox
+	{
+		minSize = (300, 0)px;
+		padding = 5px;
+	}
+}

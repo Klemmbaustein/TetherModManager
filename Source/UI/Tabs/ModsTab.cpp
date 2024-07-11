@@ -7,6 +7,7 @@
 #include "../Elements/ModEntry.hpp"
 #include "../Elements/ModFilter.hpp"
 #include "../Elements/ModPageButton.hpp"
+#include "../Elements/WarnMessage.hpp"
 #include "../Elements/ModInfoHeader.hpp"
 #include "../Elements/AppButton.hpp"
 #include "../../BackgroundTask.h"
@@ -20,6 +21,7 @@ using namespace KlemmUI;
 
 static std::mutex ImageLoadMutex;
 static std::mutex DescriptionLoadMutex;
+static std::mutex ModLoadMutex;
 
 ModsTab::ModsTab()
 	: AppTab("mods")
@@ -53,8 +55,8 @@ void ModsTab::Update()
 				std::lock_guard Guard{ ImageLoadMutex };
 				ModImages.front()->SetColor(1);
 				ModImages.front()->SetUseTexture(true, Image);
-				ImageIndex++;
 				ModImages.pop();
+				ImageIndex++;
 			}
 			else
 			{
@@ -63,9 +65,6 @@ void ModsTab::Update()
 
 		}
 		LoadNewImages = false;
-	}
-	if (ContentBox->GetChildren().size())
-	{
 	}
 }
 
@@ -104,14 +103,14 @@ void ModsTab::GenerateModPage(TsAPI::ModInfo Mod)
 
 	auto InstallButton = new AppButton();
 	InstallButton->SetImage("app/images/download.png");
-	InstallButton->SetText("Install");
+	InstallButton->SetText(Translate("mods_page_install"));
 	Header->actionsBox->AddChild(InstallButton);
 
 	if (!Mod.ModPath.empty())
 	{
 		auto OpenInBrowser = new AppButton();
 		OpenInBrowser->SetImage("app/images/open.png");
-		OpenInBrowser->SetText("Open in browser");
+		OpenInBrowser->SetText(Translate("mods_page_open_in_browser"));
 		OpenInBrowser->button->OnClickedFunction = [Mod]()
 			{
 #if _WIN32
@@ -125,6 +124,13 @@ void ModsTab::GenerateModPage(TsAPI::ModInfo Mod)
 
 	UIScrollBox* MarkdownBox = new UIScrollBox(false, 0, true);
 	Header->UpdateElement();
+
+	if (Mod.Author == "northstar" && Mod.Name == "NorthstarReleaseCandidate")
+	{
+		auto* ReleaseCandidateWarning = new WarnMessage();
+		ReleaseCandidateWarning->SetText(Translate("mods_page_release_candidate_not_available"));
+		MarkdownBox->AddChild(ReleaseCandidateWarning);
+	}
 
 	float MarkdownSize = TabBackground->GetUsedSize().X - 0.4f;
 
@@ -157,7 +163,8 @@ void ModsTab::GenerateModPage(TsAPI::ModInfo Mod)
 			MarkdownBox->GetScrollObject()->Percentage = 0;
 			MarkdownBox->RedrawElement();
 		}, 
-		"GetMarkdownDescription");
+		"GetMarkdownDescription"
+	);
 
 	TabBackground->AddChild(Header);
 	TabBackground->AddChild(MarkdownBox
@@ -217,7 +224,7 @@ void ModsTab::GenerateUI()
 	auto* SearchField = new UITextField(0, 0, AppUI::DefaultFont, nullptr);
 	SearchField
 		->SetText(ModsFilter)
-		->SetHintText("Search")
+		->SetHintText(Translate("mods_search"))
 		->SetTextSize(11)
 		->SetTextSizeMode(UIBox::SizeMode::PixelRelative)
 		->SetTryFill(true)
@@ -294,6 +301,7 @@ void ModsTab::LoadImagesAsync()
 
 void ModsTab::GenerateModsList()
 {
+	std::lock_guard Guard{ ModLoadMutex };
 	ModImages = std::queue<UIBackground*>();
 	ContentBox->DeleteChildren();
 	ImageIndex = 0;
@@ -325,7 +333,8 @@ void ModsTab::GenerateModsList()
 			EffectiveName = StrUtil::Replace(EffectiveName, " ", "");
 			EffectiveName = StrUtil::Lower(EffectiveName);
 
-			if (EffectiveName.find(EffectiveFilter) != std::string::npos || StrUtil::Lower(i.Author).find(EffectiveFilter) != std::string::npos)
+			if (EffectiveName.find(EffectiveFilter) != std::string::npos
+				|| StrUtil::Lower(i.Author).find(EffectiveFilter) != std::string::npos)
 			{
 				DisplayedMods.push_back(i);
 			}

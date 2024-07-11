@@ -18,10 +18,14 @@ element ProfileListElement
 	var Color = 1;
 	var ProfileDescription;
 
+	tryFill = true;
+	orientation = vertical;
+
 	padding = 5px;
 
 	child UIButton profileButton
 	{
+		tryFill = true;
 		borderType = rounded;
 		borderSize = 5px;
 		color = Color;
@@ -33,25 +37,33 @@ element ProfileListElement
 			padding = 5px;
 			leftPadding = 30px;
 			rightPadding = 30px;
+			orientation = vertical;
+
 			child UIBox textFieldBox
 			{
+				padding = 2px;
 			}
 			child UIText descriptionBox
 			{
 				text = ProfileDescription;
 				size = 11px;
 				color = 0;
+				padding = 2px;
+				leftPadding = 15px;
 			}
-			orientation = vertical;
 		}
 		
 		child ProfileButton copyButton
 		{
 			Icon = "app/images/copy.png";
 		}
-		child ProfileButton copyButton
+		child ProfileButton deleteButton
 		{
 			Icon = "app/images/delete.png";
+		}
+		child UIBox
+		{
+			size = (30, 0)px;
 		}
 	}
 }

@@ -30,6 +30,7 @@ void Sidebar::Update()
 	{
 		Buttons[i]->SetColor(i == AppTab::SelectedTab ? AppUI::HighlightColor : 1);
 	}
+	SidebarBackground->SetMinSize(Vector2f(0, 2.0f - AppUI::AppTitleBar->GetUsedSize()));
 }
 
 float Sidebar::GetWidth() const

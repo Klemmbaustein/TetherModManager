@@ -7,6 +7,7 @@
 #include "Tabs/LaunchTab.h"
 #include "Tabs/ModsTab.h"
 #include "Tabs/ProfileTab.h"
+#include "Tabs/SettingsTab.h"
 
 #include <KlemmUI/Rendering/Texture.h>
 using namespace KlemmUI;
@@ -14,9 +15,10 @@ using namespace KlemmUI;
 UIBox* AppUI::AppBackground = nullptr;
 unsigned int AppUI::BackgroundImage = 0;
 Sidebar* AppUI::AppSidebar = nullptr;
+TitleBar* AppUI::AppTitleBar = nullptr;
 KlemmUI::Font* AppUI::DefaultFont;
 KlemmUI::Font* AppUI::MonospaceFont;
-Vector3f AppUI::HighlightColor = Vector3f(0.2f, 0.4f, 1.0f);
+Vector3f AppUI::HighlightColor = Vector3f(0.3f, 0.4f, 1.0f);
 
 void AppUI::Create()
 {
@@ -24,7 +26,8 @@ void AppUI::Create()
 
 	LoadBackgroundImage("app/images/default_background.png");
 
-	Installer::AppWindow->OnResizedCallback = [](Window*) {
+	Installer::AppWindow->OnResizedCallback = [](Window* win) {
+		spdlog::info("Resized window to {}x{}px", win->GetSize().X, win->GetSize().Y);
 		for (AppTab* i : AppTab::AllTabs)
 		{
 			i->OnResized();
@@ -35,9 +38,17 @@ void AppUI::Create()
 	MonospaceFont = new Font("app/fonts/Roboto-Mono.ttf");
 	Installer::AppWindow->Markup.SetDefaultFont(DefaultFont);
 
+	Installer::AppWindow->IsAreaGrabbableCallback = [](KlemmUI::Window*) -> bool
+		{
+			return AppTitleBar->TitleElement->IsBeingHovered();
+		};
+	Installer::AppWindow->BorderColor = 0.5f;
+	AppTitleBar = new TitleBar();
+
 	new LaunchTab();
 	new ModsTab();
 	new ProfileTab();
+	new SettingsTab();
 
 	AppSidebar = new Sidebar();
 }
@@ -46,8 +57,8 @@ void AppUI::Update()
 {
 	AppTab::UpdateAllTabs();
 	AppSidebar->Update();
+	AppTitleBar->Update();
 
-	Installer::AppWindow->SetTitle(TranslateFormat("app_title", Translate("tab_" + AppTab::AllTabs[AppTab::SelectedTab]->GetName()).c_str()));
 }
 
 void AppUI::LoadBackgroundImage(std::string Path)

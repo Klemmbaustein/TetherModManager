@@ -4,6 +4,7 @@
 #include "Log.h"
 #include <fstream>
 #include <cstdarg>
+#include "UI/Tabs/SettingsTab.h"
 
 using namespace nlohmann;
 
@@ -57,7 +58,7 @@ static std::string GetTranslationFile(std::string TranslationName)
 				return i.path().string();
 			}
 		}
-		catch (json::exception& e)
+		catch (json::exception&)
 		{
 		}
 	}
@@ -77,9 +78,15 @@ void LoadTranslation(std::string Name)
 	{
 		spdlog::error("Failed to parse JSON file for language '{}': Error: {}", Name, e.what());
 	}
+}
 
-	std::ofstream out = std::ofstream("app/saved/language.txt");
-	out << Name;
-	out.close();
+void LoadDefaultTranslation()
+{
+	std::string Language = SettingsTab::GetSettingString("language");
+	if (Language.empty())
+	{
+		Language = "English";
+	}
 
+	LoadTranslation(Language);
 }

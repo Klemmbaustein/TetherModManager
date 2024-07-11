@@ -19,6 +19,19 @@ public:
 	static void UpdateAllTabs();
 	static std::vector<AppTab*> AllTabs;
 	static size_t SelectedTab;
+	template<typename T>
+	static T* GetTabByName(std::string Name)
+	{
+		for (AppTab* i : AllTabs)
+		{
+			if (i->GetName() == Name)
+			{
+				return dynamic_cast<T*>(i);
+			}
+		}
+		return nullptr;
+	}
+
 
 	const std::string& GetName()
 	{

@@ -5,7 +5,7 @@
 #include "KlemmUI/UI/UIButton.h"
 class SidebarButton : public KlemmUI::UIBox
 {
-	Vector3f Color = Vector3f(float(0.2), float(0.4), float(1));
+	Vector3f Color = Vector3f(float(0.3), float(0.4), float(1));
 	std::string Icon;
 
 public:
@@ -21,7 +21,7 @@ public:
 	button->SetHoveredColor(Vector3f(Color) * 0.75f);
 	button->SetPressedColor(Vector3f(Color) * 0.5f);
 	button->SetHoveredColor(Vector3f(float(0.7), float(0.8), float(1)));
-	button->SetPressedColor(Vector3f(float(0.2), float(0.4), float(1)));
+	button->SetPressedColor(Vector3f(float(0.3), float(0.4), float(1)));
 	button->BoxBorder = KlemmUI::UIBox::BorderType::Rounded;
 	button->BorderRadius = float(5);
 	button->BorderSizeMode = KlemmUI::UIBox::SizeMode::PixelRelative;
