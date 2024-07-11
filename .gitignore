@@ -369,3 +369,4 @@ compile_commands.json
 /app/temp
 /LinuxBuild
 /app/saved
+/dependencies/spdlog
