@@ -28,6 +28,7 @@ public:
 	e_1->AddChild(e_2);
 	{
 	auto* e_3 = new KlemmUI::UIBackground(true, 0, 1);
+	e_3->SetUseTexture(true, "app/images/tether.png");
 	e_3->SetMinSize(Vector2f(float(16)));
 	e_3->SetMaxSize(Vector2f(float(16)));
 	e_3->SetSizeMode(KlemmUI::UIBox::SizeMode::PixelRelative);

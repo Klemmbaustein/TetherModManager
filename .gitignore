@@ -370,3 +370,4 @@ compile_commands.json
 /LinuxBuild
 /app/saved
 /dependencies/spdlog
+/app/saved/settings.json

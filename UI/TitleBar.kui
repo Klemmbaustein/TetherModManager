@@ -38,6 +38,7 @@ element TitleBarElement
 			{
 				size = 16px;
 				padding = 5px;
+				image = "app/images/tether.png";
 			}
 
 			child UIText
